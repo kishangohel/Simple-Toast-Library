@@ -17,7 +17,7 @@ object ToastMessage : Throwable("ToastMessage is not initialized") {
         s(context.resources.getString(message))
     }
 
-    fun s(message: String, isShort: Boolean = true) {
+    fun s(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -25,7 +25,7 @@ object ToastMessage : Throwable("ToastMessage is not initialized") {
         l(context.resources.getString(message))
     }
 
-    fun l(message: String, isShort: Boolean = true) {
+    fun l(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 }
