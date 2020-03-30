@@ -4,9 +4,17 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 
-object ToastMessage : Throwable("ToastMessage is not initialized") {
+object ToastMessage : Throwable() {
 
-    lateinit var context: Context
+    override val message: String?
+        get() = "call initialize() in your Application class."
+
+    private var context: Context? = null
+        get() {
+            if (field == null)
+                throw this
+            return field
+        }
 
 
     fun initialize(context: Context) {
@@ -14,7 +22,7 @@ object ToastMessage : Throwable("ToastMessage is not initialized") {
     }
 
     fun s(@StringRes message: Int) {
-        s(context.resources.getString(message))
+        s(context!!.resources.getString(message))
     }
 
     fun s(message: String) {
@@ -22,7 +30,7 @@ object ToastMessage : Throwable("ToastMessage is not initialized") {
     }
 
     fun l(@StringRes message: Int) {
-        l(context.resources.getString(message))
+        l(context!!.resources.getString(message))
     }
 
     fun l(message: String) {
