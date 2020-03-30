@@ -1,0 +1,3 @@
+rootProject.name='LibraryTester'
+include ':app'
+include ':ktoaster'
